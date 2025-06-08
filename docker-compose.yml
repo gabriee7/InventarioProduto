@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: inventario-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inventario
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - inventario-network
+    ports:
+      - "5432:5432"
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: InventarioProduto/Dockerfile
+    container_name: inventario-api
+    restart: always
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=inventario;Username=postgres;Password=postgres
+    depends_on:
+      - postgres
+    networks:
+      - inventario-network
+    ports:
+      - "8080:8080"
+
+  web:
+    build:
+      context: ./angular/inventario
+      dockerfile: Dockerfile
+    container_name: inventario-web
+    depends_on:
+      - api
+    networks:
+      - inventario-network
+    ports:
+      - "4200:80"
+
+volumes:
+  postgres-data:
+
+networks:
+  inventario-network:
+    driver: bridge

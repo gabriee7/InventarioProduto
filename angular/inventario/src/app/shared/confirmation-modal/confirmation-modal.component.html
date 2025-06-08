@@ -1,0 +1,26 @@
+<div class="modal fade" #modalElement tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">
+          <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
+          {{ title }}
+        </h5>
+        <button type="button" class="btn-close" (click)="dismiss()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="dismiss()">
+          <i class="bi bi-x-lg me-1"></i>
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-danger" (click)="confirm()">
+          <i class="bi bi-check-lg me-1"></i>
+          Confirmar Exclusão
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
