@@ -9,7 +9,7 @@
 
 1. Clonar o repositório
 ```bash
-git clone https://github.com/gabriee7/inventario-produto.git
+git clone [https://github.com/gabriee7/inventario-produto.git](https://github.com/gabriee7/InventarioProduto.git)
 ```
 
 2.Entrar no diretório raiz do projeto
