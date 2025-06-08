@@ -14,7 +14,7 @@ git clone https://github.com/gabriee7/InventarioProduto.git
 
 2. Entrar no diretório raiz do projeto
 ```bash
-cd inventario-produto
+cd InventarioProduto
 ```
 
 3. Construir e iniciar os containers
