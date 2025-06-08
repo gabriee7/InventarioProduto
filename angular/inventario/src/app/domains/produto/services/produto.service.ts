@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Produto } from '../models/produto.model';
 import { Observable } from 'rxjs';
@@ -11,8 +11,12 @@ export class ProdutoService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<PagedResult<Produto>> {
-    return this.http.get<PagedResult<Produto>>(`${this.apiUrl}/GetAll`);
+  getAll(pageNumber: number, pageSize: number): Observable<PagedResult<Produto>> {
+    let params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<PagedResult<Produto>>(`${this.apiUrl}/GetAll`, { params });
   }
 
   getById(id: string): Observable<Produto> {
