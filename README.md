@@ -12,7 +12,7 @@
 git clone https://github.com/gabriee7/InventarioProduto.git
 ```
 
-2.Entrar no diretório raiz do projeto
+2. Entrar no diretório raiz do projeto
 ```bash
 cd inventario-produto
 ```
